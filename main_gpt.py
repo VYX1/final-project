@@ -1,7 +1,9 @@
 import random
 
+
 def draw_card():
     return random.choice([2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11])
+
 
 def calculate_score(hand):
     score = sum(hand)
@@ -12,9 +14,11 @@ def calculate_score(hand):
         num_aces -= 1
     return score
 
+
 def write_to_file(data):
     with open("blackjack_data.txt", "a") as file:
         file.write(data + "\n")
+
 
 def blackjack():
     player_hand = [draw_card(), draw_card()]
@@ -57,6 +61,7 @@ def blackjack():
         write_to_file("Dealer wins.")
     else:
         write_to_file("Player wins.")
+
 
 if __name__ == "__main__":
     blackjack()
