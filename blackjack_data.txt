@@ -1,5 +1,0 @@
-Player's original sum: 18, Decision: stand, Outcome: Dealer wins.
-Player's original sum: 12, Decision: hit, Outcome: Player busts! Dealer wins.
-Player's original sum: 18, Decision: stand, Outcome: Dealer wins.
-Player's original sum: 16, Decision: hit, Outcome: Player busts! Dealer wins.
-Player's original sum: 12, Decision: hit, Outcome: Player busts! Dealer wins.
