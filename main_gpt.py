@@ -17,7 +17,7 @@ def calculate_score(hand):
 
 def write_to_file(player_hand, decision, outcome):
     with open("blackjack_data.txt", "a") as file:
-        file.write(f"Player's original sum: {sum(player_hand[:2])}, Decision: {decision}, Outcome: {outcome}\n")
+        file.write(f"Player's original sum: {calculate_score(player_hand[:2])}, Decision: {decision}, Outcome: {outcome}\n")
 
 
 def blackjack():
@@ -27,16 +27,12 @@ def blackjack():
     player_score = calculate_score(player_hand)
     dealer_score = calculate_score(dealer_hand)
 
-    # Write initial hand to file
-    # write_to_file(player_hand, '', '')
-
     if player_score == 21:
-        write_to_file(player_hand, '', "Player has Blackjack!")
+        write_to_file(player_hand, 'stand', "Player has Blackjack!")
         return
 
     while True:
-        # decision = input("Do you want to hit or stand? (h/s): ").lower()
-        if player_score <= 16:
+        if player_score < 17:
             player_hand.append(draw_card())
             player_score = calculate_score(player_hand)
             if player_score > 21:
@@ -51,12 +47,20 @@ def blackjack():
         dealer_score = calculate_score(dealer_hand)
 
     # Determine winner
-    if dealer_score > 21:
+    if dealer_score > 21 and len(player_hand) > 2:
+        write_to_file(player_hand, 'hit', "Dealer busts! Player wins.")
+    elif dealer_score > 21:
         write_to_file(player_hand, 'stand', "Dealer busts! Player wins.")
+    elif dealer_score == player_score and len(player_hand) > 2:
+        write_to_file(player_hand, 'hit', "It's a tie!")
     elif dealer_score == player_score:
         write_to_file(player_hand, 'stand', "It's a tie!")
+    elif dealer_score > player_score and len(player_hand) > 2:
+        write_to_file(player_hand, 'hit', "Dealer wins.")
     elif dealer_score > player_score:
         write_to_file(player_hand, 'stand', "Dealer wins.")
+    elif player_score > dealer_score and len(player_hand) > 2:
+        write_to_file(player_hand, 'hit', "Player wins.")
     else:
         write_to_file(player_hand, 'stand', "Player wins.")
 
