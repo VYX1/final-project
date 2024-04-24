@@ -1,0 +1,6 @@
+Player: [10, 6], Dealer: [5, ?]
+Player hits: [10, 6, 10]
+Player busts! Dealer wins.
+Player: [4, 3], Dealer: [6, ?]
+Dealer's turn: [6, 10, 10]
+Dealer busts! Player wins.
